@@ -31,8 +31,14 @@ request
 {
   "type": "query_user",
   "token": "asdf",
-  "fields": [
+  "fields": [ // exhaustive
     "ID",
+
+    // from wp_users
+    "user_nicename",
+    "display_name",
+
+    // from wp_userprofile
     "usertype",
     "verified",
     "email_verified",
@@ -51,7 +57,6 @@ response
     "fields: {
       "ID": 121,
       "usertype": "client",
-      ...,
       "abc": null,
     }
   }
@@ -66,10 +71,13 @@ request
 {
   "type": "edit_user",
   "token": "asdf",
-  "fields": {
-    "shop_description": "ASFASFASFA",
-    "shop_name": "ASDASD",
-    "abc": "ASFASF",
+  "fields": {  // exhaustive
+    // from wp_users
+    "user_nicename",
+    "display_name",
+
+    // from wp_userprofile
+    "phone",
   }
 }
 ```
