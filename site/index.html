@@ -96,6 +96,12 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
+<!--
+mkdocs build && git add -A && git commit -m "update" && git push origin master
+-->
+
+<p>[//]: # (</p>
+<p>)</p>
 <p>entry point: <code>wp-json/api/v1/info</code></p>
 <h2 id="example-usage">Example Usage</h2>
 <pre><code>fetch(&quot;//wp-json/api/v1/info&quot;, {
@@ -137,6 +143,8 @@
     &quot;rating&quot;,
     &quot;phone&quot;,
     &quot;shop_ID&quot;,
+
+    // fake
     &quot;abc&quot;
   ],
 }
@@ -181,11 +189,22 @@
 <pre><code>{
   &quot;type&quot;: &quot;query_shop&quot;,
   &quot;token&quot;: &quot;asdf&quot;,
+  &quot;id&quot;: &quot;asdf&quot;, (required)
   &quot;fields&quot;: [
+    // from table wp_shops
+    &quot;owner_ID&quot;,
     &quot;description&quot;,
     &quot;name&quot;,
+
     &quot;abc&quot;,
   ],
+  // from table wp_shop_products
+  &quot;products&quot;: [
+    &quot;id&quot;,
+    &quot;name&quot;,
+    &quot;shop_ID&quot;,
+    &quot;description&quot;
+  ]
 }
 </code></pre>
 
@@ -210,6 +229,14 @@
   &quot;fields&quot;: {
     &quot;description&quot;: &quot;ASFASFASFA&quot;,
     &quot;name&quot;: &quot;ASDASD&quot;,
+
+    &quot;products&quot;: {
+      &quot;&lt;id&gt;&quot;: {
+        &quot;description&quot;: &quot;ds&quot;,
+        &quot;name&quot;: &quot;asdf&quot;,
+
+      }
+    }
     &quot;abc&quot;: &quot;ASFASF&quot;,
   }
 }
@@ -380,5 +407,5 @@
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2020-09-15 04:23:28.078162+00:00
+Build Date UTC : 2020-09-15 07:39:43.514488+00:00
 -->

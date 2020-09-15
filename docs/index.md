@@ -1,5 +1,16 @@
 
 
+<!--
+mkdocs build && git add -A && git commit -m "update" && git push origin master
+-->
+
+
+[//]: # (
+
+  
+)
+
+
 
 entry point: `wp-json/api/v1/info`
 
@@ -46,6 +57,8 @@ request
     "rating",
     "phone",
     "shop_ID",
+
+    // fake
     "abc"
   ],
 }
@@ -96,11 +109,22 @@ request
 {
   "type": "query_shop",
   "token": "asdf",
+  "id": "asdf", (required)
   "fields": [
+    // from table wp_shops
+    "owner_ID",
     "description",
     "name",
+
     "abc",
   ],
+  // from table wp_shop_products
+  "products": [
+    "id",
+    "name",
+    "shop_ID",
+    "description"
+  ]
 }
 ```
 response
@@ -128,6 +152,14 @@ request
   "fields": {
     "description": "ASFASFASFA",
     "name": "ASDASD",
+
+    "products": {
+      "<id>": {
+        "description": "ds",
+        "name": "asdf",
+
+      }
+    }
     "abc": "ASFASF",
   }
 }
