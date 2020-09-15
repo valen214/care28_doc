@@ -32,9 +32,15 @@ request
   "type": "query_user",
   "token": "asdf",
   "fields": [
-    "shop_description",
-    "shop_name",
-    "abc",
+    "ID",
+    "usertype",
+    "verified",
+    "email_verified",
+    "license_verified",
+    "rating",
+    "phone",
+    "shop_ID",
+    "abc"
   ],
 }
 ```
@@ -43,8 +49,9 @@ response
 {
   "body": {
     "fields: {
-      "shop_description": "asdf",
-      "shop_name": "asdf",
+      "ID": 121,
+      "usertype": "client",
+      ...,
       "abc": null,
     }
   }
