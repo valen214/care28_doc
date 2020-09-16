@@ -100,8 +100,6 @@
 mkdocs build && git add -A && git commit -m "update" && git push origin master
 -->
 
-<p>[//]: # (</p>
-<p>)</p>
 <p>entry point: <code>wp-json/api/v1/info</code></p>
 <h2 id="example-usage">Example Usage</h2>
 <pre><code>fetch(&quot;//wp-json/api/v1/info&quot;, {
@@ -144,6 +142,9 @@ mkdocs build && git add -A && git commit -m "update" && git push origin master
     &quot;phone&quot;,
     &quot;shop_ID&quot;,
 
+    &quot;avatar&quot;, // base64 format without prefix
+    &quot;license&quot;, // token is required
+
     // fake
     &quot;abc&quot;
   ],
@@ -169,11 +170,15 @@ mkdocs build && git add -A && git commit -m "update" && git push origin master
   &quot;token&quot;: &quot;asdf&quot;,
   &quot;fields&quot;: {  // exhaustive
     // from wp_users
-    &quot;user_nicename&quot;,
-    &quot;display_name&quot;,
+    &quot;user_nicename&quot;: &quot;&lt;name&gt;&quot;,
+    &quot;display_name&quot;: &quot;&lt;name&gt;&quot;,
 
     // from wp_userprofile
-    &quot;phone&quot;,
+    &quot;phone&quot;: &quot;&lt;phone&gt;&quot;,
+
+    &quot;avatar&quot;: &quot;&lt;base64&gt;&quot;,
+    &quot;license&quot;: &quot;&lt;base64&gt;&quot;
+
   }
 }
 </code></pre>
@@ -200,7 +205,7 @@ mkdocs build && git add -A && git commit -m "update" && git push origin master
   ],
   // from table wp_shop_products
   &quot;products&quot;: [
-    &quot;id&quot;,
+    &quot;ID&quot;, *optional*
     &quot;name&quot;,
     &quot;shop_ID&quot;,
     &quot;description&quot;
@@ -215,6 +220,12 @@ mkdocs build && git add -A && git commit -m "update" && git push origin master
       &quot;description&quot;: &quot;asdf&quot;,
       &quot;name&quot;: &quot;asdf&quot;,
       &quot;abc&quot;: null,
+    },
+    &quot;products&quot;: {
+      &quot;&lt;id&gt;&quot;: {
+        &quot;ID&quot;: &quot;&lt;id&gt;&quot;,
+        &quot;name&quot;: &quot;ASD&quot;
+      }
     }
   }
 }
@@ -407,5 +418,5 @@ mkdocs build && git add -A && git commit -m "update" && git push origin master
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2020-09-15 07:39:43.514488+00:00
+Build Date UTC : 2020-09-16 10:39:35.184853+00:00
 -->

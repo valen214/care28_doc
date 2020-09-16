@@ -5,10 +5,7 @@ mkdocs build && git add -A && git commit -m "update" && git push origin master
 -->
 
 
-[//]: # (
-
-  
-)
+[//]: # ( comment test  )
 
 
 
@@ -58,6 +55,9 @@ request
     "phone",
     "shop_ID",
 
+    "avatar", // base64 format without prefix
+    "license", // token is required
+
     // fake
     "abc"
   ],
@@ -86,11 +86,15 @@ request
   "token": "asdf",
   "fields": {  // exhaustive
     // from wp_users
-    "user_nicename",
-    "display_name",
+    "user_nicename": "<name>",
+    "display_name": "<name>",
 
     // from wp_userprofile
-    "phone",
+    "phone": "<phone>",
+
+    "avatar": "<base64>",
+    "license": "<base64>"
+  
   }
 }
 ```
@@ -120,7 +124,7 @@ request
   ],
   // from table wp_shop_products
   "products": [
-    "id",
+    "ID", *optional*
     "name",
     "shop_ID",
     "description"
@@ -135,6 +139,12 @@ response
       "description": "asdf",
       "name": "asdf",
       "abc": null,
+    },
+    "products": {
+      "<id>": {
+        "ID": "<id>",
+        "name": "ASD"
+      }
     }
   }
 }
