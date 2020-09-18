@@ -5,7 +5,7 @@ mkdocs build && git add -A && git commit -m "update" && git push origin master
 -->
 
 
-[//]: # ( comment test  )
+[//]: # ( comment test )
 
 
 
@@ -187,18 +187,12 @@ request
 ```
 {
   type: query_product
-    token: token
-    products: {
-    "123": {
-      fields: [
-        name
-        description
-      ]
-    },
-    "51342": {
-      fields: [ description ]
-    }
-  }
+  token: token
+  "id": <id: number> or [<id:number>, <id:number>]
+  "fields": [
+    "description",
+    "name"
+  ]
 }
 ```
 
@@ -208,14 +202,12 @@ response
   "body": {
     "products": {
       "123": {
-        fields: {
-          name: "asdf"
-        }
+        name: "asdf"
+        description: "asdf"
       },
       "51342": {
-        fields: {
-          description: "asdf"
-        }
+        name: "asdaaf"
+        description: "asdaaf"
       }
     }
   }

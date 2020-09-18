@@ -263,18 +263,12 @@ mkdocs build && git add -A && git commit -m "update" && git push origin master
 <p>request</p>
 <pre><code>{
   type: query_product
-    token: token
-    products: {
-    &quot;123&quot;: {
-      fields: [
-        name
-        description
-      ]
-    },
-    &quot;51342&quot;: {
-      fields: [ description ]
-    }
-  }
+  token: token
+  &quot;id&quot;: &lt;id: number&gt; or [&lt;id:number&gt;, &lt;id:number&gt;]
+  &quot;fields&quot;: [
+    &quot;description&quot;,
+    &quot;name&quot;
+  ]
 }
 </code></pre>
 
@@ -283,14 +277,12 @@ mkdocs build && git add -A && git commit -m "update" && git push origin master
   &quot;body&quot;: {
     &quot;products&quot;: {
       &quot;123&quot;: {
-        fields: {
-          name: &quot;asdf&quot;
-        }
+        name: &quot;asdf&quot;
+        description: &quot;asdf&quot;
       },
       &quot;51342&quot;: {
-        fields: {
-          description: &quot;asdf&quot;
-        }
+        name: &quot;asdaaf&quot;
+        description: &quot;asdaaf&quot;
       }
     }
   }
@@ -418,5 +410,5 @@ mkdocs build && git add -A && git commit -m "update" && git push origin master
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2020-09-16 10:39:35.184853+00:00
+Build Date UTC : 2020-09-18 17:32:14.986069+00:00
 -->
