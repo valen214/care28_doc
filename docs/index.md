@@ -7,12 +7,30 @@ mkdocs build && git add -A && git commit -m "update" && git push origin master
 
 [//]: # ( comment test )
 
+[//]: # (  )
 
 
 entry point: `wp-json/api/v1/info`
 
+<style>
+  .row {
+    width: 100%;
+    margin: 0;
+  }
+
+  .w50 {
+    width: 50%;
+  }
+
+  .wrap-break-all {
+    white-space: break-spaces;
+    word-break: break-all;
+  }
+</style>
+
 ## Example Usage
-```
+<div class="row">
+  <div class="w50"><pre><code class="wrap-break-all language-json">
 fetch("//wp-json/api/v1/info", {
     method: "POST",
     headers: {
@@ -30,11 +48,63 @@ fetch("//wp-json/api/v1/info", {
 }).then(res => res.json()).then(res => {
     console.log(res);
 })
-```
+  </code></pre></div><div class="w50"><pre><code class="wrap-break-all language-json">
+empty
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+  </code></pre></div>
+</div>
 
 
 ## payload: `query_user`
+
 request
+
+<div class="row">
+  <div style="width:50%">
+    <pre><code class="wrap-break-all language-json">{
+  "type": "query_user",
+  "token": "asdf",
+  "fields": [
+    "ID",
+
+    
+    "user_nicename",
+    "display_name",
+
+    
+    "usertype",
+    "verified",
+    "email_verified",
+    "license_verified",
+    "rating",
+    "phone",
+    "shop_ID",
+
+    "avatar",
+    "license",
+
+    
+    "abc"
+  ],
+}
+    </code></pre>
+  </div>
+  <div style="width:50%">
 ```
 {
   "type": "query_user",
@@ -63,6 +133,9 @@ request
   ],
 }
 ```
+  </div>
+</div>
+
 response
 ```
 {
@@ -80,24 +153,52 @@ response
 
 ## payload: `edit_user`
 request
-```
-{
+<div class="row">
+  <div class="w50">
+    <pre><code class="wrap-break-all language-json">{
+  "type": "edit_user",
+  "token": "asdf",
+  "fields": {
+    &nbsp;
+    "user_nicename": "&lt;name&gt;",
+    "display_name": "&lt;name&gt;",
+    &nbsp;
+    &nbsp;
+    "phone": "&lt;phone&gt;",
+    &nbsp;
+    "avatar": {
+      "name": "abc.png",
+      "format": "png",
+      "data": "&lt;base64&gt;",
+    },
+    "license": {
+      "name": "license.png",
+      "format": "png",
+      "data": "&lt;base64&gt;",
+    }
+    &nbsp;
+  }
+}</code></pre>
+  </div>
+  <div class="w50">
+    <pre><code class="language-json">{
   "type": "edit_user",
   "token": "asdf",
   "fields": {  // exhaustive
     // from wp_users
-    "user_nicename": "<name>",
-    "display_name": "<name>",
-
+    "user_nicename": "&lt;name&gt;",
+    "display_name": "&lt;name&gt;",
+    &nbsp;
     // from wp_userprofile
-    "phone": "<phone>",
-
-    "avatar": "<base64>",
-    "license": "<base64>"
-  
+    "phone": "&lt;phone&gt;",
+    &nbsp;
+    "avatar": <a href="#datatype-image"><i>&lt;image&gt;</i></a>,
+    "license": <a href="#datatype-image"><i>&lt;image&gt;</i></a>
+    &nbsp;
   }
-}
-```
+}</code></pre>
+  </div>
+</div>
 response
 ```
 {
@@ -218,18 +319,43 @@ response
 
 ## payload: `edit_product`
 request
-```
-{
+<div class="row">
+  <div class="w50">
+    <pre><code class="wrap-break-all language-json">{
   "type": "edit_product",
   "token": "asdf",
   "id": 123,
   "fields": {
     "description": "ASFASFASFA",
     "name": "ASDASD",
+    "images": [{
+        "name": "image1.png",
+        "format": "png",
+        "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+      }, {
+        "name": "image2.gif",
+        "format": "gif",
+        "data": "R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+      }
+    ]
     "abc": "ASFASF",
   }
-}
-```
+}</code></pre>
+  </div>
+  <div class="w50">
+    <pre><code class="language-json">{
+  "type": "edit_product",
+  "token": "asdf",
+  "id": 123,
+  "fields": {
+    "description": "ASFASFASFA",
+    "name": "ASDASD",
+    "images": []
+    "abc": "ASFASF",
+  }
+}</code></pre>
+  </div>
+</div>
 response
 ```
 {
@@ -257,3 +383,13 @@ response
   "body": "ok"
 }
 ```
+
+
+
+## datatype: image
+<pre><code class="language-json">
+{
+  "name": "&lt;string>",
+  "format": "jpg",
+  "data": "base64"
+}</code></pre>
