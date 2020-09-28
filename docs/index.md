@@ -105,8 +105,7 @@ request
     </code></pre>
   </div>
   <div style="width:50%">
-```
-{
+    <pre><code class="wrap-break-all language-json">{
   "type": "query_user",
   "token": "asdf",
   "fields": [ // exhaustive
@@ -132,7 +131,7 @@ request
     "abc"
   ],
 }
-```
+    </code></pre>
   </div>
 </div>
 
@@ -285,17 +284,33 @@ response
 
 ## payload: `query_product`
 request
-```
-{
+<div class="row">
+  <div class="w50">
+    <pre><code class="wrap-break-all language-json">{
   type: query_product
   token: token
-  "id": <id: number> or [<id:number>, <id:number>]
+  "id": [1, 2]
   "fields": [
     "description",
     "name"
   ]
 }
-```
+    </code></pre>
+  </div>
+  <div class="w50">
+    <pre><code class="wrap-break-all language-js">{
+  type: "query_product"
+  token: string
+  "id": number or number[]
+  "fields": [
+    "description",
+    "name"
+  ]
+}
+    </code></pre>
+  </div>
+</div>
+
 
 response
 ```

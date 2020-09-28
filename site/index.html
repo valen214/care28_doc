@@ -194,35 +194,33 @@ empty
     </code></pre>
   </div>
   <div style="width:50%">
-
-<pre><code>{
-  &quot;type&quot;: &quot;query_user&quot;,
-  &quot;token&quot;: &quot;asdf&quot;,
-  &quot;fields&quot;: [ // exhaustive
-    &quot;ID&quot;,
+    <pre><code class="wrap-break-all language-json">{
+  "type": "query_user",
+  "token": "asdf",
+  "fields": [ // exhaustive
+    "ID",
 
     // from wp_users
-    &quot;user_nicename&quot;,
-    &quot;display_name&quot;,
+    "user_nicename",
+    "display_name",
 
     // from wp_userprofile
-    &quot;usertype&quot;,
-    &quot;verified&quot;,
-    &quot;email_verified&quot;,
-    &quot;license_verified&quot;,
-    &quot;rating&quot;,
-    &quot;phone&quot;,
-    &quot;shop_ID&quot;,
+    "usertype",
+    "verified",
+    "email_verified",
+    "license_verified",
+    "rating",
+    "phone",
+    "shop_ID",
 
-    &quot;avatar&quot;, // base64 format without prefix
-    &quot;license&quot;, // token is required
+    "avatar", // base64 format without prefix
+    "license", // token is required
 
     // fake
-    &quot;abc&quot;
+    "abc"
   ],
 }
-</code></pre>
-
+    </code></pre>
   </div>
 </div>
 
@@ -363,18 +361,33 @@ response</p>
 </code></pre>
 
 <h2 id="payload-query_product">payload: <code>query_product</code></h2>
-<p>request</p>
-<pre><code>{
+<p>request
+<div class="row">
+  <div class="w50">
+    <pre><code class="wrap-break-all language-json">{
   type: query_product
   token: token
-  &quot;id&quot;: &lt;id: number&gt; or [&lt;id:number&gt;, &lt;id:number&gt;]
-  &quot;fields&quot;: [
-    &quot;description&quot;,
-    &quot;name&quot;
+  "id": [1, 2]
+  "fields": [
+    "description",
+    "name"
   ]
 }
-</code></pre>
-
+    </code></pre>
+  </div>
+  <div class="w50">
+    <pre><code class="wrap-break-all language-js">{
+  type: "query_product"
+  token: string
+  "id": number or number[]
+  "fields": [
+    "description",
+    "name"
+  ]
+}
+    </code></pre>
+  </div>
+</div></p>
 <p>response</p>
 <pre><code>{
   &quot;body&quot;: {
@@ -546,5 +559,5 @@ response</p>
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2020-09-27 23:27:19.807930+00:00
+Build Date UTC : 2020-09-28 23:05:47.504734+00:00
 -->
