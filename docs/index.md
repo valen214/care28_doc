@@ -16,6 +16,7 @@ entry point: `wp-json/api/v1/info`
   .row {
     width: 100%;
     margin: 0;
+    display: flex;
   }
 
   .w50 {
