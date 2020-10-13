@@ -140,7 +140,7 @@ response
 ```
 {
   "body": {
-    "fields: {
+    "fields": {
       "ID": 121,
       "usertype": "client",
       "abc": null,
