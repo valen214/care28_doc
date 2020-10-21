@@ -124,7 +124,7 @@ mkdocs build && git add -A && git commit -m "update" && git push origin master
 </style>
 
 <h2 id="example-usage">Example Usage</h2>
-<p><div class="row">
+<div class="row">
   <div class="w50"><pre><code class="wrap-break-all language-json">
 fetch("//wp-json/api/v1/info", {
     method: "POST",
@@ -140,7 +140,7 @@ fetch("//wp-json/api/v1/info", {
           "abc",
         ],
     })
-}).then(res =&gt; res.json()).then(res =&gt; {
+}).then(res => res.json()).then(res => {
     console.log(res);
 })
   </code></pre></div><div class="w50"><pre><code class="wrap-break-all language-json">
@@ -162,21 +162,18 @@ empty
 &nbsp;
 &nbsp;
   </code></pre></div>
-</div></p>
+</div>
+
 <h2 id="payload-query_user">payload: <code>query_user</code></h2>
 <p>request</p>
 <div class="row">
   <div style="width:50%">
     <pre><code class="wrap-break-all language-json">{
   "type": "query_user",
-  "token": "asdf",
+  "ID": 1,
   "fields": [
-    "ID",
-
     "user_nicename",
     "display_name",
-
-
     "usertype",
     "verified",
     "email_verified",
@@ -184,44 +181,33 @@ empty
     "rating",
     "phone",
     "shop_ID",
-
     "avatar",
-    "license",
-
-
-    "abc"
-  ],
+    "license"
+  ]
 }
     </code></pre>
   </div>
   <div style="width:50%">
-    <pre><code class="wrap-break-all language-json">{
-  "type": "query_user",
-  "token": "asdf",
-  "fields": [ // exhaustive
-    "ID",
-
-    // from wp_users
-    "user_nicename",
-    "display_name",
-
-    // from wp_userprofile
-    "usertype",
-    "verified",
-    "email_verified",
-    "license_verified",
-    "rating",
-    "phone",
-    "shop_ID",
-
-    "avatar", // base64 format without prefix
-    "license", // token is required
-
-    // fake
-    "abc"
-  ],
+    <pre><code class="wrap-break-all language-json">
+{
+"type": "query_user",
+"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDIyMTM3NzQsIm5iZiI6MTYwMjIxMzc3NCwiZXhwIjoxNjAyODE4NTc0LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.t-8IeKnOAVznpPRh56VZJ1WOnPOXnza1bNE8DqoYU7w" || "ID"/"id": number/string, 
+"fields": [
+"user_nicename",
+"display_name",
+"usertype",
+"verified",
+"email_verified",
+"license_verified",
+"rating",
+"phone",
+"shop_ID",
+"avatar",
+"license"
+]
 }
-    </code></pre>
+</code></pre>
+
   </div>
 </div>
 
@@ -236,9 +222,8 @@ empty
   }
 }
 </code></pre>
-
 <h2 id="payload-edit_user">payload: <code>edit_user</code></h2>
-<p>request
+<p>request</p>
 <div class="row">
   <div class="w50">
     <pre><code class="wrap-break-all language-json">{
@@ -285,12 +270,11 @@ empty
 }</code></pre>
   </div>
 </div>
-response</p>
+<p>response</p>
 <pre><code>{
   &quot;body&quot;: &quot;ok&quot;
 }
 </code></pre>
-
 <h2 id="payload-query_shop">payload: <code>query_shop</code></h2>
 <p>request</p>
 <pre><code>{
@@ -314,7 +298,6 @@ response</p>
   ]
 }
 </code></pre>
-
 <p>response</p>
 <pre><code>{
   &quot;body&quot;: {
@@ -332,7 +315,6 @@ response</p>
   }
 }
 </code></pre>
-
 <h2 id="payload-edit_shop">payload: <code>edit_shop</code></h2>
 <p>request</p>
 <pre><code>{
@@ -354,15 +336,13 @@ response</p>
   }
 }
 </code></pre>
-
 <p>response</p>
 <pre><code>{
   &quot;body&quot;: &quot;ok&quot;
 }
 </code></pre>
-
 <h2 id="payload-query_product">payload: <code>query_product</code></h2>
-<p>request
+<p>request</p>
 <div class="row">
   <div class="w50">
     <pre><code class="wrap-break-all language-json">{
@@ -388,7 +368,8 @@ response</p>
 }
     </code></pre>
   </div>
-</div></p>
+</div>
+
 <p>response</p>
 <pre><code>{
   &quot;body&quot;: {
@@ -405,9 +386,8 @@ response</p>
   }
 }
 </code></pre>
-
 <h2 id="payload-edit_product">payload: <code>edit_product</code></h2>
-<p>request
+<p>request</p>
 <div class="row">
   <div class="w50">
     <pre><code class="wrap-break-all language-json">{
@@ -445,12 +425,11 @@ response</p>
 }</code></pre>
   </div>
 </div>
-response</p>
+<p>response</p>
 <pre><code>{
   &quot;body&quot;: &quot;ok&quot;
 }
 </code></pre>
-
 <h2 id="payload-add_product">payload: <code>add_product</code></h2>
 <p>request</p>
 <pre><code>{
@@ -463,20 +442,18 @@ response</p>
   }
 }
 </code></pre>
-
 <p>response</p>
 <pre><code>{
   &quot;body&quot;: &quot;ok&quot;
 }
 </code></pre>
-
 <h2 id="datatype-image">datatype: image</h2>
-<p><pre><code class="language-json">
+<pre><code class="language-json">
 {
-  "name": "&lt;string&gt;",
+  "name": "&lt;string>",
   "format": "jpg",
   "data": "base64"
-}</code></pre></p></div>
+}</code></pre></div>
             </div>
         </div>
 
@@ -560,5 +537,5 @@ response</p>
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2020-10-13 08:03:05.928222+00:00
+Build Date UTC : 2020-10-21 04:17:48.418313+00:00
 -->

@@ -1,14 +1,9 @@
-
-
 <!--
 mkdocs build && git add -A && git commit -m "update" && git push origin master
 -->
 
-
-[//]: # ( comment test )
-
-[//]: # (  )
-
+[//]: # " comment test "
+[//]: # "  "
 
 entry point: `wp-json/api/v1/info`
 
@@ -30,6 +25,7 @@ entry point: `wp-json/api/v1/info`
 </style>
 
 ## Example Usage
+
 <div class="row">
   <div class="w50"><pre><code class="wrap-break-all language-json">
 fetch("//wp-json/api/v1/info", {
@@ -70,7 +66,6 @@ empty
   </code></pre></div>
 </div>
 
-
 ## payload: `query_user`
 
 request
@@ -79,15 +74,10 @@ request
   <div style="width:50%">
     <pre><code class="wrap-break-all language-json">{
   "type": "query_user",
-  "token": "asdf",
+  "ID": 1,
   "fields": [
-    "ID",
-
-    
     "user_nicename",
     "display_name",
-
-    
     "usertype",
     "verified",
     "email_verified",
@@ -95,48 +85,38 @@ request
     "rating",
     "phone",
     "shop_ID",
-
     "avatar",
-    "license",
-
-    
-    "abc"
-  ],
+    "license"
+  ]
 }
     </code></pre>
   </div>
   <div style="width:50%">
-    <pre><code class="wrap-break-all language-json">{
-  "type": "query_user",
-  "token": "asdf",
-  "fields": [ // exhaustive
-    "ID",
-
-    // from wp_users
-    "user_nicename",
-    "display_name",
-
-    // from wp_userprofile
-    "usertype",
-    "verified",
-    "email_verified",
-    "license_verified",
-    "rating",
-    "phone",
-    "shop_ID",
-
-    "avatar", // base64 format without prefix
-    "license", // token is required
-
-    // fake
-    "abc"
-  ],
+    <pre><code class="wrap-break-all language-json">
+{
+"type": "query_user",
+"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDIyMTM3NzQsIm5iZiI6MTYwMjIxMzc3NCwiZXhwIjoxNjAyODE4NTc0LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.t-8IeKnOAVznpPRh56VZJ1WOnPOXnza1bNE8DqoYU7w" || "ID"/"id": number/string, 
+"fields": [
+"user_nicename",
+"display_name",
+"usertype",
+"verified",
+"email_verified",
+"license_verified",
+"rating",
+"phone",
+"shop_ID",
+"avatar",
+"license"
+]
 }
-    </code></pre>
+</code></pre>
+
   </div>
 </div>
 
 response
+
 ```
 {
   "body": {
@@ -149,10 +129,10 @@ response
 }
 ```
 
-
-
 ## payload: `edit_user`
+
 request
+
 <div class="row">
   <div class="w50">
     <pre><code class="wrap-break-all language-json">{
@@ -206,10 +186,10 @@ response
 }
 ```
 
-
-
 ## payload: `query_shop`
+
 request
+
 ```
 {
   "type": "query_shop",
@@ -232,7 +212,9 @@ request
   ]
 }
 ```
+
 response
+
 ```
 {
   "body": {
@@ -251,10 +233,10 @@ response
 }
 ```
 
-
-
 ## payload: `edit_shop`
+
 request
+
 ```
 {
   "type": "edit_shop",
@@ -275,16 +257,19 @@ request
   }
 }
 ```
+
 response
+
 ```
 {
   "body": "ok"
 }
 ```
 
-
 ## payload: `query_product`
+
 request
+
 <div class="row">
   <div class="w50">
     <pre><code class="wrap-break-all language-json">{
@@ -312,8 +297,8 @@ request
   </div>
 </div>
 
-
 response
+
 ```
 {
   "body": {
@@ -331,10 +316,10 @@ response
 }
 ```
 
-
-
 ## payload: `edit_product`
+
 request
+
 <div class="row">
   <div class="w50">
     <pre><code class="wrap-break-all language-json">{
@@ -379,9 +364,10 @@ response
 }
 ```
 
-
 ## payload: `add_product`
+
 request
+
 ```
 {
   "type": "add_product",
@@ -393,16 +379,17 @@ request
   }
 }
 ```
+
 response
+
 ```
 {
   "body": "ok"
 }
 ```
 
-
-
 ## datatype: image
+
 <pre><code class="language-json">
 {
   "name": "&lt;string>",
