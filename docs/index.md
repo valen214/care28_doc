@@ -120,12 +120,19 @@ response
 ```
 {
   "body": {
-    "fields": {
-      "ID": 121,
-      "usertype": "client",
-      "abc": null,
-    }
-  }
+    "user_nicename":"aaabc",
+    "display_name":"aaabc",
+    "usertype":"agent",
+    "verified":0,
+    "email_verified":0,
+    "license_verified":0,
+    "rating":null,
+    "phone":"aaabc",
+    "shop_ID":1,
+    "avatar":"xmBsUbPSP8-avatar1.png",
+    "license":"QDb4HBPAbt-license.png"
+}
+
 }
 ```
 
@@ -135,54 +142,34 @@ request
 
 <div class="row">
   <div class="w50">
-    <pre><code class="wrap-break-all language-json">{
-  "type": "edit_user",
-  "token": "asdf",
-  "fields": {
-    &nbsp;
-    "user_nicename": "&lt;name&gt;",
-    "display_name": "&lt;name&gt;",
-    &nbsp;
-    &nbsp;
-    "phone": "&lt;phone&gt;",
-    &nbsp;
-    "avatar": {
-      "name": "abc.png",
-      "format": "png",
-      "data": "&lt;base64&gt;",
-    },
-    "license": {
-      "name": "license.png",
-      "format": "png",
-      "data": "&lt;base64&gt;",
+    <pre><code class="wrap-break-all language-json">
+    {
+      "type": "edit_user",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDIyMTM3NzQsIm5iZiI6MTYwMjIxMzc3NCwiZXhwIjoxNjAyODE4NTc0LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.t-8IeKnOAVznpPRh56VZJ1WOnPOXnza1bNE8DqoYU7w",
+      "fields": {
+        "user_nicename": "test",
+        "display_name": "test",
+        "phone": "test",
+        "area": "test",
+        "avatar": {
+          "name": "test.png",
+          "format": "png",
+          "data": "<base64>"
+        },
+        "license": {
+          "name": "test.png",
+          "format": "png",
+          "data": "<base64>"
+        }
+      }
     }
-    &nbsp;
-  }
-}</code></pre>
-  </div>
-  <div class="w50">
-    <pre><code class="language-json">{
-  "type": "edit_user",
-  "token": "asdf",
-  "fields": {  // exhaustive
-    // from wp_users
-    "user_nicename": "&lt;name&gt;",
-    "display_name": "&lt;name&gt;",
-    &nbsp;
-    // from wp_userprofile
-    "phone": "&lt;phone&gt;",
-    &nbsp;
-    "avatar": <a href="#datatype-image"><i>&lt;image&gt;</i></a>,
-    "license": <a href="#datatype-image"><i>&lt;image&gt;</i></a>
-    &nbsp;
-  }
-}</code></pre>
+</code></pre>
   </div>
 </div>
 response
 ```
 {
-  "body": "ok"
+  "body":"Update success"
 }
 ```
 
@@ -193,22 +180,24 @@ request
 ```
 {
   "type": "query_shop",
-  "token": "asdf",
-  "id": "asdf", (required)
+  "shop_ID":1,
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDIyMTM3NzQsIm5iZiI6MTYwMjIxMzc3NCwiZXhwIjoxNjAyODE4NTc0LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.t-8IeKnOAVznpPRh56VZJ1WOnPOXnza1bNE8DqoYU7w",
   "fields": [
-    // from table wp_shops
     "owner_ID",
     "description",
-    "name",
-
-    "abc",
+    "name"
   ],
-  // from table wp_shop_products
   "products": [
-    "ID", *optional*
+    "ID",
     "name",
     "shop_ID",
-    "description"
+    "description",
+    "thumbnail",
+    "area",
+    "estate",
+    "price",
+    "status",
+    "lastUpdated"
   ]
 }
 ```
@@ -218,16 +207,23 @@ response
 ```
 {
   "body": {
-    "fields: {
-      "description": "asdf",
-      "name": "asdf",
-      "abc": null,
-    },
-    "products": {
-      "<id>": {
-        "ID": "<id>",
-        "name": "ASD"
-      }
+    "owner_ID":24,
+    "description":null,
+    "name":"shop of agent aaaaaf",
+    "products":{
+      "6":{
+        "ID":6,
+        "name":"Product 1 of aaaaaf",
+        "shop_ID":31,
+        "description":"實積 533 呎",
+        "thumbnail":"2020/10/modern-minimalist-bathroom-3115450_960_720.jpg",
+        "area":"何文田",
+        "estate":"御龍居",
+        "price":"1280 萬",
+        "status":"可睇",
+        "lastUpdated":"2020.10.14"
+        },
+      "7":{...}
     }
   }
 }
@@ -237,32 +233,40 @@ response
 
 request
 
-```
-{
-  "type": "edit_shop",
-  "token": "asdf",
-  "id": *optional*
-  "fields": {
-    "description": "ASFASFASFA",
-    "name": "ASDASD",
-
-    "products": {
-      "<id>": {
-        "description": "ds",
-        "name": "asdf",
-
+<div class="row">
+  <div class="w50">
+    <pre><code class="wrap-break-all language-json">
+    {
+      "type": "edit_shop",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDMyNTE5MDUsIm5iZiI6MTYwMzI1MTkwNSwiZXhwIjoxNjAzODU2NzA1LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.pwB6L997kW_So5YWnXSj_WVdTUvdSOaj9SAfUEI514U",
+      "id": 1,
+      "fields": {
+        "description": "ASFASFASFA",
+        "name": "ASDASD"
       }
     }
-    "abc": "ASFASF",
-  }
-}
-```
+    </code></pre>
+  </div>
+  <div class="w50">
+    <pre><code class="wrap-break-all language-js">
+    {
+      "type": "edit_shop",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDMyNTE5MDUsIm5iZiI6MTYwMzI1MTkwNSwiZXhwIjoxNjAzODU2NzA1LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.pwB6L997kW_So5YWnXSj_WVdTUvdSOaj9SAfUEI514U",
+      "id": 1, //shop_ID
+      "fields": {
+        "description": "ASFASFASFA",
+        "name": "ASDASD"
+      }
+    }
+    </code></pre>
+  </div>
+</div>
 
 response
 
 ```
 {
-  "body": "ok"
+  "body":"Update success"
 }
 ```
 
@@ -322,45 +326,58 @@ request
 
 <div class="row">
   <div class="w50">
-    <pre><code class="wrap-break-all language-json">{
-  "type": "edit_product",
-  "token": "asdf",
-  "id": 123,
-  "fields": {
-    "description": "ASFASFASFA",
-    "name": "ASDASD",
-    "images": [{
-        "name": "image1.png",
-        "format": "png",
-        "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
-      }, {
-        "name": "image2.gif",
-        "format": "gif",
-        "data": "R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+    <pre><code class="wrap-break-all language-json">
+    {
+      "type": "edit_product",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDMyNjM1MzcsIm5iZiI6MTYwMzI2MzUzNywiZXhwIjoxNjAzODY4MzM3LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.wXDNGlemU4JWdNPFl0xlkyJw6iQsyw9w8xIf069qAw0",
+      "id": 53,
+      "fields": {
+        "name":"test",
+        "description":"test",
+        "area":"test",
+        "estate":"test",
+        "price":"test",
+        "status":"test",
+        "lastUpdated":"test"
+        "images":[{
+          "name":"test",
+          "format":"test",
+          "data": "<base64>"
+        },
+        {...}]
       }
-    ]
-    "abc": "ASFASF",
-  }
-}</code></pre>
+    }
+    </code></pre>
   </div>
   <div class="w50">
-    <pre><code class="language-json">{
-  "type": "edit_product",
-  "token": "asdf",
-  "id": 123,
-  "fields": {
-    "description": "ASFASFASFA",
-    "name": "ASDASD",
-    "images": []
-    "abc": "ASFASF",
-  }
-}</code></pre>
+    <pre><code class="language-json">
+    {
+      "type": "edit_product",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDMyNjM1MzcsIm5iZiI6MTYwMzI2MzUzNywiZXhwIjoxNjAzODY4MzM3LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.wXDNGlemU4JWdNPFl0xlkyJw6iQsyw9w8xIf069qAw0",
+      "id": 53, //product_ID
+      "fields": {
+        "name":"test",
+        "description":"test",
+        "area":"test",
+        "estate":"test",
+        "price":"test",
+        "status":"test",
+        "lastUpdated":"test"
+        "images":[{
+          "name":"test",
+          "format":"test",
+          "data": "<base64>"
+        },
+        {...}] // So far only accept one image
+      }
+    }
+    </code></pre>
   </div>
 </div>
 response
 ```
 {
-  "body": "ok"
+  "body":"Update success"
 }
 ```
 
@@ -371,11 +388,20 @@ request
 ```
 {
   "type": "add_product",
-  "token": "asdf",
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDI1NzA5NDgsIm5iZiI6MTYwMjU3MDk0OCwiZXhwIjoxNjAzMTc1NzQ4LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.puM5R6sxCwDp8Q3ujXWdJhZZL1wsjpiP4TpwFFqRh7Y",
   "fields": {
-    "description": "ASFASFASFA",
     "name": "ASDASD",
-    "abc": "ASFASF",
+   "description": "ASFASFASFA",
+    "area":"Kowloon",
+    "estate":"Home",
+    "price":"$100",
+    "status":"on sale",
+    "lastUpdated":"1111",
+     "images": [{
+        "name": "image1.png",
+        "format": "png",
+        "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+      }]
   }
 }
 ```
@@ -384,7 +410,27 @@ response
 
 ```
 {
-  "body": "ok"
+  "body":"Insert success"
+}
+```
+
+## payload: `del_product`
+
+request
+
+```
+{
+  "type": "del_product",
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDMxNzk1MDUsIm5iZiI6MTYwMzE3OTUwNSwiZXhwIjoxNjAzNzg0MzA1LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.B1oPUGinQIlu95-COKy_gDogLaGHVPakMXp_4gLvx38",
+  "ID": 20
+}
+```
+
+response
+
+```
+{
+  "body":"Delete success"
 }
 ```
 

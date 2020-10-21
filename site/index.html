@@ -92,6 +92,11 @@
               </ul>
             </li>
             
+            <li class="nav-item" data-level="2"><a href="#payload-del_product" class="nav-link">payload: del_product</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
             <li class="nav-item" data-level="2"><a href="#datatype-image" class="nav-link">datatype: image</a>
               <ul class="nav flex-column">
               </ul>
@@ -214,131 +219,137 @@ empty
 <p>response</p>
 <pre><code>{
   &quot;body&quot;: {
-    &quot;fields&quot;: {
-      &quot;ID&quot;: 121,
-      &quot;usertype&quot;: &quot;client&quot;,
-      &quot;abc&quot;: null,
-    }
-  }
+    &quot;user_nicename&quot;:&quot;aaabc&quot;,
+    &quot;display_name&quot;:&quot;aaabc&quot;,
+    &quot;usertype&quot;:&quot;agent&quot;,
+    &quot;verified&quot;:0,
+    &quot;email_verified&quot;:0,
+    &quot;license_verified&quot;:0,
+    &quot;rating&quot;:null,
+    &quot;phone&quot;:&quot;aaabc&quot;,
+    &quot;shop_ID&quot;:1,
+    &quot;avatar&quot;:&quot;xmBsUbPSP8-avatar1.png&quot;,
+    &quot;license&quot;:&quot;QDb4HBPAbt-license.png&quot;
+}
+
 }
 </code></pre>
 <h2 id="payload-edit_user">payload: <code>edit_user</code></h2>
 <p>request</p>
 <div class="row">
   <div class="w50">
-    <pre><code class="wrap-break-all language-json">{
-  "type": "edit_user",
-  "token": "asdf",
-  "fields": {
-    &nbsp;
-    "user_nicename": "&lt;name&gt;",
-    "display_name": "&lt;name&gt;",
-    &nbsp;
-    &nbsp;
-    "phone": "&lt;phone&gt;",
-    &nbsp;
-    "avatar": {
-      "name": "abc.png",
-      "format": "png",
-      "data": "&lt;base64&gt;",
-    },
-    "license": {
-      "name": "license.png",
-      "format": "png",
-      "data": "&lt;base64&gt;",
+    <pre><code class="wrap-break-all language-json">
+    {
+      "type": "edit_user",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDIyMTM3NzQsIm5iZiI6MTYwMjIxMzc3NCwiZXhwIjoxNjAyODE4NTc0LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.t-8IeKnOAVznpPRh56VZJ1WOnPOXnza1bNE8DqoYU7w",
+      "fields": {
+        "user_nicename": "test",
+        "display_name": "test",
+        "phone": "test",
+        "area": "test",
+        "avatar": {
+          "name": "test.png",
+          "format": "png",
+          "data": "<base64>"
+        },
+        "license": {
+          "name": "test.png",
+          "format": "png",
+          "data": "<base64>"
+        }
+      }
     }
-    &nbsp;
-  }
-}</code></pre>
-  </div>
-  <div class="w50">
-    <pre><code class="language-json">{
-  "type": "edit_user",
-  "token": "asdf",
-  "fields": {  // exhaustive
-    // from wp_users
-    "user_nicename": "&lt;name&gt;",
-    "display_name": "&lt;name&gt;",
-    &nbsp;
-    // from wp_userprofile
-    "phone": "&lt;phone&gt;",
-    &nbsp;
-    "avatar": <a href="#datatype-image"><i>&lt;image&gt;</i></a>,
-    "license": <a href="#datatype-image"><i>&lt;image&gt;</i></a>
-    &nbsp;
-  }
-}</code></pre>
+</code></pre>
   </div>
 </div>
 <p>response</p>
 <pre><code>{
-  &quot;body&quot;: &quot;ok&quot;
+  &quot;body&quot;:&quot;Update success&quot;
 }
 </code></pre>
 <h2 id="payload-query_shop">payload: <code>query_shop</code></h2>
 <p>request</p>
 <pre><code>{
   &quot;type&quot;: &quot;query_shop&quot;,
-  &quot;token&quot;: &quot;asdf&quot;,
-  &quot;id&quot;: &quot;asdf&quot;, (required)
+  &quot;shop_ID&quot;:1,
+  &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDIyMTM3NzQsIm5iZiI6MTYwMjIxMzc3NCwiZXhwIjoxNjAyODE4NTc0LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.t-8IeKnOAVznpPRh56VZJ1WOnPOXnza1bNE8DqoYU7w&quot;,
   &quot;fields&quot;: [
-    // from table wp_shops
     &quot;owner_ID&quot;,
     &quot;description&quot;,
-    &quot;name&quot;,
-
-    &quot;abc&quot;,
+    &quot;name&quot;
   ],
-  // from table wp_shop_products
   &quot;products&quot;: [
-    &quot;ID&quot;, *optional*
+    &quot;ID&quot;,
     &quot;name&quot;,
     &quot;shop_ID&quot;,
-    &quot;description&quot;
+    &quot;description&quot;,
+    &quot;thumbnail&quot;,
+    &quot;area&quot;,
+    &quot;estate&quot;,
+    &quot;price&quot;,
+    &quot;status&quot;,
+    &quot;lastUpdated&quot;
   ]
 }
 </code></pre>
 <p>response</p>
 <pre><code>{
   &quot;body&quot;: {
-    &quot;fields: {
-      &quot;description&quot;: &quot;asdf&quot;,
-      &quot;name&quot;: &quot;asdf&quot;,
-      &quot;abc&quot;: null,
-    },
-    &quot;products&quot;: {
-      &quot;&lt;id&gt;&quot;: {
-        &quot;ID&quot;: &quot;&lt;id&gt;&quot;,
-        &quot;name&quot;: &quot;ASD&quot;
-      }
+    &quot;owner_ID&quot;:24,
+    &quot;description&quot;:null,
+    &quot;name&quot;:&quot;shop of agent aaaaaf&quot;,
+    &quot;products&quot;:{
+      &quot;6&quot;:{
+        &quot;ID&quot;:6,
+        &quot;name&quot;:&quot;Product 1 of aaaaaf&quot;,
+        &quot;shop_ID&quot;:31,
+        &quot;description&quot;:&quot;實積 533 呎&quot;,
+        &quot;thumbnail&quot;:&quot;2020/10/modern-minimalist-bathroom-3115450_960_720.jpg&quot;,
+        &quot;area&quot;:&quot;何文田&quot;,
+        &quot;estate&quot;:&quot;御龍居&quot;,
+        &quot;price&quot;:&quot;1280 萬&quot;,
+        &quot;status&quot;:&quot;可睇&quot;,
+        &quot;lastUpdated&quot;:&quot;2020.10.14&quot;
+        },
+      &quot;7&quot;:{...}
     }
   }
 }
 </code></pre>
 <h2 id="payload-edit_shop">payload: <code>edit_shop</code></h2>
 <p>request</p>
-<pre><code>{
-  &quot;type&quot;: &quot;edit_shop&quot;,
-  &quot;token&quot;: &quot;asdf&quot;,
-  &quot;id&quot;: *optional*
-  &quot;fields&quot;: {
-    &quot;description&quot;: &quot;ASFASFASFA&quot;,
-    &quot;name&quot;: &quot;ASDASD&quot;,
-
-    &quot;products&quot;: {
-      &quot;&lt;id&gt;&quot;: {
-        &quot;description&quot;: &quot;ds&quot;,
-        &quot;name&quot;: &quot;asdf&quot;,
-
+<div class="row">
+  <div class="w50">
+    <pre><code class="wrap-break-all language-json">
+    {
+      "type": "edit_shop",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDMyNTE5MDUsIm5iZiI6MTYwMzI1MTkwNSwiZXhwIjoxNjAzODU2NzA1LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.pwB6L997kW_So5YWnXSj_WVdTUvdSOaj9SAfUEI514U",
+      "id": 1,
+      "fields": {
+        "description": "ASFASFASFA",
+        "name": "ASDASD"
       }
     }
-    &quot;abc&quot;: &quot;ASFASF&quot;,
-  }
-}
-</code></pre>
+    </code></pre>
+  </div>
+  <div class="w50">
+    <pre><code class="wrap-break-all language-js">
+    {
+      "type": "edit_shop",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDMyNTE5MDUsIm5iZiI6MTYwMzI1MTkwNSwiZXhwIjoxNjAzODU2NzA1LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.pwB6L997kW_So5YWnXSj_WVdTUvdSOaj9SAfUEI514U",
+      "id": 1, //shop_ID
+      "fields": {
+        "description": "ASFASFASFA",
+        "name": "ASDASD"
+      }
+    }
+    </code></pre>
+  </div>
+</div>
+
 <p>response</p>
 <pre><code>{
-  &quot;body&quot;: &quot;ok&quot;
+  &quot;body&quot;:&quot;Update success&quot;
 }
 </code></pre>
 <h2 id="payload-query_product">payload: <code>query_product</code></h2>
@@ -390,61 +401,96 @@ empty
 <p>request</p>
 <div class="row">
   <div class="w50">
-    <pre><code class="wrap-break-all language-json">{
-  "type": "edit_product",
-  "token": "asdf",
-  "id": 123,
-  "fields": {
-    "description": "ASFASFASFA",
-    "name": "ASDASD",
-    "images": [{
-        "name": "image1.png",
-        "format": "png",
-        "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
-      }, {
-        "name": "image2.gif",
-        "format": "gif",
-        "data": "R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+    <pre><code class="wrap-break-all language-json">
+    {
+      "type": "edit_product",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDMyNjM1MzcsIm5iZiI6MTYwMzI2MzUzNywiZXhwIjoxNjAzODY4MzM3LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.wXDNGlemU4JWdNPFl0xlkyJw6iQsyw9w8xIf069qAw0",
+      "id": 53,
+      "fields": {
+        "name":"test",
+        "description":"test",
+        "area":"test",
+        "estate":"test",
+        "price":"test",
+        "status":"test",
+        "lastUpdated":"test"
+        "images":[{
+          "name":"test",
+          "format":"test",
+          "data": "<base64>"
+        },
+        {...}]
       }
-    ]
-    "abc": "ASFASF",
-  }
-}</code></pre>
+    }
+    </code></pre>
   </div>
   <div class="w50">
-    <pre><code class="language-json">{
-  "type": "edit_product",
-  "token": "asdf",
-  "id": 123,
-  "fields": {
-    "description": "ASFASFASFA",
-    "name": "ASDASD",
-    "images": []
-    "abc": "ASFASF",
-  }
-}</code></pre>
+    <pre><code class="language-json">
+    {
+      "type": "edit_product",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDMyNjM1MzcsIm5iZiI6MTYwMzI2MzUzNywiZXhwIjoxNjAzODY4MzM3LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.wXDNGlemU4JWdNPFl0xlkyJw6iQsyw9w8xIf069qAw0",
+      "id": 53, //product_ID
+      "fields": {
+        "name":"test",
+        "description":"test",
+        "area":"test",
+        "estate":"test",
+        "price":"test",
+        "status":"test",
+        "lastUpdated":"test"
+        "images":[{
+          "name":"test",
+          "format":"test",
+          "data": "<base64>"
+        },
+        {...}] // So far only accept one image
+      }
+    }
+    </code></pre>
   </div>
 </div>
 <p>response</p>
 <pre><code>{
-  &quot;body&quot;: &quot;ok&quot;
+  &quot;body&quot;:&quot;Update success&quot;
 }
 </code></pre>
 <h2 id="payload-add_product">payload: <code>add_product</code></h2>
 <p>request</p>
 <pre><code>{
   &quot;type&quot;: &quot;add_product&quot;,
-  &quot;token&quot;: &quot;asdf&quot;,
+  &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDI1NzA5NDgsIm5iZiI6MTYwMjU3MDk0OCwiZXhwIjoxNjAzMTc1NzQ4LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.puM5R6sxCwDp8Q3ujXWdJhZZL1wsjpiP4TpwFFqRh7Y&quot;,
   &quot;fields&quot;: {
-    &quot;description&quot;: &quot;ASFASFASFA&quot;,
     &quot;name&quot;: &quot;ASDASD&quot;,
-    &quot;abc&quot;: &quot;ASFASF&quot;,
+   &quot;description&quot;: &quot;ASFASFASFA&quot;,
+    &quot;area&quot;:&quot;Kowloon&quot;,
+    &quot;estate&quot;:&quot;Home&quot;,
+    &quot;price&quot;:&quot;$100&quot;,
+    &quot;status&quot;:&quot;on sale&quot;,
+    &quot;lastUpdated&quot;:&quot;1111&quot;,
+     &quot;images&quot;: [{
+        &quot;name&quot;: &quot;image1.png&quot;,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;data&quot;: &quot;iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==&quot;
+      }]
   }
 }
 </code></pre>
 <p>response</p>
 <pre><code>{
-  &quot;body&quot;: &quot;ok&quot;
+  &quot;body&quot;:&quot;Insert success&quot;
+}
+</code></pre>
+<h2 id="payload-del_product">payload: <code>del_product</code></h2>
+<p>request</p>
+<pre><code>{
+  &quot;type&quot;: &quot;del_product&quot;,
+  &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDMxNzk1MDUsIm5iZiI6MTYwMzE3OTUwNSwiZXhwIjoxNjAzNzg0MzA1LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.B1oPUGinQIlu95-COKy_gDogLaGHVPakMXp_4gLvx38&quot;,
+  &quot;ID&quot;: 20
+}
+</code></pre>
+<p>response</p>
+<pre><code>{
+  &quot;body&quot;:&quot;Delete success&quot;
 }
 </code></pre>
 <h2 id="datatype-image">datatype: image</h2>
@@ -537,5 +583,5 @@ empty
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2020-10-21 04:17:48.418313+00:00
+Build Date UTC : 2020-10-21 07:29:45.087660+00:00
 -->
