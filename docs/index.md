@@ -434,6 +434,29 @@ response
 }
 ```
 
+## payload: `make_appointment`
+
+request
+
+```
+{
+  "type": "make_appointment",
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDMxNzk1MDUsIm5iZiI6MTYwMzE3OTUwNSwiZXhwIjoxNjAzNzg0MzA1LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.B1oPUGinQIlu95-COKy_gDogLaGHVPakMXp_4gLvx38",
+  "ID": 20,
+  "fields":{
+    "requested_date": "2020-10-20 04:17:50"
+  }
+}
+```
+
+response
+
+```
+{
+  "body":"Appointment Insert success"
+}
+```
+
 ## datatype: image
 
 <pre><code class="language-json">
