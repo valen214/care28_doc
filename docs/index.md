@@ -180,25 +180,7 @@ request
 ```
 {
   "type": "query_shop",
-  "shop_ID":1,
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDIyMTM3NzQsIm5iZiI6MTYwMjIxMzc3NCwiZXhwIjoxNjAyODE4NTc0LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.t-8IeKnOAVznpPRh56VZJ1WOnPOXnza1bNE8DqoYU7w",
-  "fields": [
-    "owner_ID",
-    "description",
-    "name"
-  ],
-  "products": [
-    "ID",
-    "name",
-    "shop_ID",
-    "description",
-    "thumbnail",
-    "area",
-    "estate",
-    "price",
-    "status",
-    "lastUpdated"
-  ]
+  "shop_ID":1
 }
 ```
 
@@ -210,8 +192,7 @@ response
     "owner_ID":24,
     "description":null,
     "name":"shop of agent aaaaaf",
-    "products":{
-      "6":{
+    "products":[{
         "ID":6,
         "name":"Product 1 of aaaaaf",
         "shop_ID":31,
@@ -223,8 +204,8 @@ response
         "status":"可睇",
         "lastUpdated":"2020.10.14"
         },
-      "7":{...}
-    }
+      {...}
+    ]
   }
 }
 ```

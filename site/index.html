@@ -276,25 +276,7 @@ empty
 <p>request</p>
 <pre><code>{
   &quot;type&quot;: &quot;query_shop&quot;,
-  &quot;shop_ID&quot;:1,
-  &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDIyMTM3NzQsIm5iZiI6MTYwMjIxMzc3NCwiZXhwIjoxNjAyODE4NTc0LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.t-8IeKnOAVznpPRh56VZJ1WOnPOXnza1bNE8DqoYU7w&quot;,
-  &quot;fields&quot;: [
-    &quot;owner_ID&quot;,
-    &quot;description&quot;,
-    &quot;name&quot;
-  ],
-  &quot;products&quot;: [
-    &quot;ID&quot;,
-    &quot;name&quot;,
-    &quot;shop_ID&quot;,
-    &quot;description&quot;,
-    &quot;thumbnail&quot;,
-    &quot;area&quot;,
-    &quot;estate&quot;,
-    &quot;price&quot;,
-    &quot;status&quot;,
-    &quot;lastUpdated&quot;
-  ]
+  &quot;shop_ID&quot;:1
 }
 </code></pre>
 <p>response</p>
@@ -303,8 +285,7 @@ empty
     &quot;owner_ID&quot;:24,
     &quot;description&quot;:null,
     &quot;name&quot;:&quot;shop of agent aaaaaf&quot;,
-    &quot;products&quot;:{
-      &quot;6&quot;:{
+    &quot;products&quot;:[{
         &quot;ID&quot;:6,
         &quot;name&quot;:&quot;Product 1 of aaaaaf&quot;,
         &quot;shop_ID&quot;:31,
@@ -316,8 +297,8 @@ empty
         &quot;status&quot;:&quot;可睇&quot;,
         &quot;lastUpdated&quot;:&quot;2020.10.14&quot;
         },
-      &quot;7&quot;:{...}
-    }
+      {...}
+    ]
   }
 }
 </code></pre>
@@ -604,5 +585,5 @@ empty
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2020-10-23 04:39:57.145071+00:00
+Build Date UTC : 2020-11-21 13:35:10.868533+00:00
 -->
