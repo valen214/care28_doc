@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>info - Care28 Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "info";
+    var mkdocs_page_input_path = "rest\\info.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Care28 Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../devcycle/">Dev Cycle</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Rest API</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">info</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Care28 Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Rest API &raquo;</li>
+        
+      
+    
+    <li>info</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <!--
+mkdocs build && git add -A && git commit -m "update" && git push origin master
+-->
+
+<p>entry point: <code>wp-json/api/v1/info</code></p>
+<style>
+  .row {
+    width: 100%;
+    margin: 0;
+    display: flex;
+  }
+
+  .w50 {
+    width: 50%;
+  }
+
+  .wrap-break-all.wrap-break-all {
+    white-space: break-spaces;
+    word-break: break-all;
+  }
+</style>
+
+<h2 id="example-usage">Example Usage</h2>
+<div class="row">
+  <div class="w50"><pre><code class="wrap-break-all language-json">
+fetch("//wp-json/api/v1/info", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        "type": "query_user",
+        "token": "asdf",
+        "fields": [
+          "shop_description",
+          "shop_name",
+          "abc",
+        ],
+    })
+}).then(res => res.json()).then(res => {
+    console.log(res);
+})
+  </code></pre></div><div class="w50"><pre><code class="wrap-break-all language-json">
+empty
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+  </code></pre></div>
+</div>
+
+<h2 id="payload-query_user">payload: <code>query_user</code></h2>
+<p>request</p>
+<div class="row">
+  <div style="width:50%">
+    <pre><code class="wrap-break-all language-json">{
+  "type": "query_user",
+  "ID": 1,
+  "fields": [
+    "user_nicename",
+    "display_name",
+    "usertype",
+    "verified",
+    "email_verified",
+    "license_verified",
+    "rating",
+    "phone",
+    "shop_ID",
+    "avatar",
+    "license"
+  ]
+}
+    </code></pre>
+  </div>
+  <div style="width:50%">
+    <pre><code class="wrap-break-all language-json">
+{
+  "type": "query_user",
+  "token": "&lt;token&gt;",
+  "ID" | "id": number | string, 
+  "fields": [
+    "user_nicename",
+    "display_name",
+    "usertype",
+    "verified",
+    "email_verified",
+    "license_verified",
+    "rating",
+    "phone",
+    "shop_ID",
+    "avatar",
+    "license"
+  ]
+}
+</code></pre>
+
+  </div>
+</div>
+
+<p>response</p>
+<pre><code>{
+  &quot;body&quot;: {
+    &quot;user_nicename&quot;:&quot;aaabc&quot;,
+    &quot;display_name&quot;:&quot;aaabc&quot;,
+    &quot;usertype&quot;:&quot;agent&quot;,
+    &quot;verified&quot;:0,
+    &quot;email_verified&quot;:0,
+    &quot;license_verified&quot;:0,
+    &quot;rating&quot;:null,
+    &quot;phone&quot;:&quot;aaabc&quot;,
+    &quot;shop_ID&quot;:1,
+    &quot;avatar&quot;:&quot;xmBsUbPSP8-avatar1.png&quot;,
+    &quot;license&quot;:&quot;QDb4HBPAbt-license.png&quot;
+  }
+}
+</code></pre>
+
+<h2 id="payload-edit_user">payload: <code>edit_user</code></h2>
+<p>request</p>
+<div class="row">
+  <div class="w50">
+    <pre><code class="wrap-break-all language-json">
+{
+  "type": "edit_user",
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDIyMTM3NzQsIm5iZiI6MTYwMjIxMzc3NCwiZXhwIjoxNjAyODE4NTc0LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.t-8IeKnOAVznpPRh56VZJ1WOnPOXnza1bNE8DqoYU7w",
+  "fields": {
+    "user_nicename": "test",
+    "display_name": "test",
+    "phone": "test",
+    "area": "test",
+    "avatar": {
+      "name": "test.png",
+      "format": "png",
+      "data": "<base64>"
+    },
+    "license": {
+      "name": "test.png",
+      "format": "png",
+      "data": "<base64>"
+    }
+  }
+}
+</code></pre>
+  </div>
+</div>
+
+<p>response</p>
+<pre><code>{
+  &quot;body&quot;:&quot;Update success&quot;
+}
+</code></pre>
+
+<h2 id="payload-query_shop">payload: <code>query_shop</code></h2>
+<p>request</p>
+<pre><code>{
+  &quot;type&quot;: &quot;query_shop&quot;,
+  &quot;shop_ID&quot;:1
+}
+</code></pre>
+
+<p>response</p>
+<pre><code>{
+  &quot;body&quot;: {
+    &quot;owner_ID&quot;:24,
+    &quot;description&quot;:null,
+    &quot;name&quot;:&quot;shop of agent aaaaaf&quot;,
+    &quot;products&quot;:[{
+        &quot;ID&quot;:6,
+        &quot;name&quot;:&quot;Product 1 of aaaaaf&quot;,
+        &quot;shop_ID&quot;:31,
+        &quot;description&quot;:&quot;實積 533 呎&quot;,
+        &quot;thumbnail&quot;:&quot;2020/10/modern-minimalist-bathroom-3115450_960_720.jpg&quot;,
+        &quot;area&quot;:&quot;何文田&quot;,
+        &quot;estate&quot;:&quot;御龍居&quot;,
+        &quot;price&quot;:&quot;1280 萬&quot;,
+        &quot;status&quot;:&quot;可睇&quot;,
+        &quot;lastUpdated&quot;:&quot;2020.10.14&quot;
+        },
+      {...}
+    ]
+  }
+}
+</code></pre>
+
+<h2 id="payload-edit_shop">payload: <code>edit_shop</code></h2>
+<p>request</p>
+<div class="row">
+  <div class="w50">
+    <pre><code class="wrap-break-all language-json">
+    {
+      "type": "edit_shop",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDMyNTE5MDUsIm5iZiI6MTYwMzI1MTkwNSwiZXhwIjoxNjAzODU2NzA1LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.pwB6L997kW_So5YWnXSj_WVdTUvdSOaj9SAfUEI514U",
+      "id": 1,
+      "fields": {
+        "description": "ASFASFASFA",
+        "name": "ASDASD"
+      }
+    }
+    </code></pre>
+  </div>
+  <div class="w50">
+    <pre><code class="wrap-break-all language-js">
+    {
+      "type": "edit_shop",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDMyNTE5MDUsIm5iZiI6MTYwMzI1MTkwNSwiZXhwIjoxNjAzODU2NzA1LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.pwB6L997kW_So5YWnXSj_WVdTUvdSOaj9SAfUEI514U",
+      "id": 1, //shop_ID
+      "fields": {
+        "description": "ASFASFASFA",
+        "name": "ASDASD"
+      }
+    }
+    </code></pre>
+  </div>
+</div>
+
+<p>response</p>
+<pre><code>{
+  &quot;body&quot;:&quot;Update success&quot;
+}
+</code></pre>
+
+<h2 id="payload-query_product">payload: <code>query_product</code></h2>
+<p>request</p>
+<div class="row">
+  <div class="w50">
+    <pre><code class="wrap-break-all language-json">{
+  type: query_product
+  token: token
+  "id": [1, 2]
+  "fields": [
+    "description",
+    "name"
+  ]
+}
+    </code></pre>
+  </div>
+  <div class="w50">
+    <pre><code class="wrap-break-all language-js">{
+  type: "query_product"
+  token: string
+  "id": number or number[]
+  "fields": [
+    "description",
+    "name"
+  ]
+}
+    </code></pre>
+  </div>
+</div>
+
+<p>response</p>
+<pre><code>{
+  &quot;body&quot;: {
+    &quot;products&quot;: {
+      &quot;123&quot;: {
+        name: &quot;asdf&quot;
+        description: &quot;asdf&quot;
+      },
+      &quot;51342&quot;: {
+        name: &quot;asdaaf&quot;
+        description: &quot;asdaaf&quot;
+      }
+    }
+  }
+}
+</code></pre>
+
+<h2 id="payload-edit_product">payload: <code>edit_product</code></h2>
+<p>request</p>
+<div class="row">
+  <div class="w50">
+    <pre><code class="wrap-break-all language-json">
+    {
+      "type": "edit_product",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDMyNjM1MzcsIm5iZiI6MTYwMzI2MzUzNywiZXhwIjoxNjAzODY4MzM3LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.wXDNGlemU4JWdNPFl0xlkyJw6iQsyw9w8xIf069qAw0",
+      "id": 53,
+      "fields": {
+        "name":"test",
+        "description":"test",
+        "area":"test",
+        "estate":"test",
+        "price":"test",
+        "status":"test",
+        "lastUpdated":"test"
+        "images":[{
+          "name":"test",
+          "format":"test",
+          "data": "<base64>"
+        },
+        {...}]
+      }
+    }
+    </code></pre>
+  </div>
+  <div class="w50">
+    <pre><code class="wrap-break-all language-json">
+    {
+      "type": "edit_product",
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDMyNjM1MzcsIm5iZiI6MTYwMzI2MzUzNywiZXhwIjoxNjAzODY4MzM3LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.wXDNGlemU4JWdNPFl0xlkyJw6iQsyw9w8xIf069qAw0",
+      "id": 53, //product_ID
+      "fields": {
+        "name":"test",
+        "description":"test",
+        "area":"test",
+        "estate":"test",
+        "price":"test",
+        "status":"test",
+        "lastUpdated":"test"
+        "images":[{
+          "name":"test",
+          "format":"test",
+          "data": "<base64>"
+        },
+        {...}] // So far only accept one image
+      }
+    }
+    </code></pre>
+  </div>
+</div>
+
+<p>response</p>
+<pre><code>{
+  &quot;body&quot;:&quot;Update success&quot;
+}
+</code></pre>
+
+<h2 id="payload-add_product">payload: <code>add_product</code></h2>
+<p>request</p>
+<pre><code>{
+  &quot;type&quot;: &quot;add_product&quot;,
+  &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDI1NzA5NDgsIm5iZiI6MTYwMjU3MDk0OCwiZXhwIjoxNjAzMTc1NzQ4LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.puM5R6sxCwDp8Q3ujXWdJhZZL1wsjpiP4TpwFFqRh7Y&quot;,
+  &quot;fields&quot;: {
+    &quot;name&quot;: &quot;ASDASD&quot;,
+   &quot;description&quot;: &quot;ASFASFASFA&quot;,
+    &quot;area&quot;:&quot;Kowloon&quot;,
+    &quot;estate&quot;:&quot;Home&quot;,
+    &quot;price&quot;:&quot;$100&quot;,
+    &quot;status&quot;:&quot;on sale&quot;,
+    &quot;lastUpdated&quot;:&quot;1111&quot;,
+     &quot;images&quot;: [{
+        &quot;name&quot;: &quot;image1.png&quot;,
+        &quot;format&quot;: &quot;png&quot;,
+        &quot;data&quot;: &quot;iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==&quot;
+      }]
+  }
+}
+</code></pre>
+
+<p>response</p>
+<pre><code>{
+  &quot;body&quot;:&quot;Insert success&quot;
+}
+</code></pre>
+
+<h2 id="payload-del_product">payload: <code>del_product</code></h2>
+<p>request</p>
+<pre><code>{
+  &quot;type&quot;: &quot;del_product&quot;,
+  &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDMxNzk1MDUsIm5iZiI6MTYwMzE3OTUwNSwiZXhwIjoxNjAzNzg0MzA1LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.B1oPUGinQIlu95-COKy_gDogLaGHVPakMXp_4gLvx38&quot;,
+  &quot;ID&quot;: 20
+}
+</code></pre>
+
+<p>response</p>
+<pre><code>{
+  &quot;body&quot;:&quot;Delete success&quot;
+}
+</code></pre>
+
+<h2 id="payload-make_appointment">payload: <code>make_appointment</code></h2>
+<p>request</p>
+<pre><code>{
+  &quot;type&quot;: &quot;make_appointment&quot;,
+  &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xOC4xNjMuNTYuNjUiLCJpYXQiOjE2MDMxNzk1MDUsIm5iZiI6MTYwMzE3OTUwNSwiZXhwIjoxNjAzNzg0MzA1LCJkYXRhIjp7InVzZXIiOnsiaWQiOiI1In19fQ.B1oPUGinQIlu95-COKy_gDogLaGHVPakMXp_4gLvx38&quot;,
+  &quot;ID&quot;: 20,
+  &quot;fields&quot;:{
+    &quot;requested_date&quot;: &quot;2020-10-20 04:17:50&quot;
+  }
+}
+</code></pre>
+
+<p>response</p>
+<pre><code>{
+  &quot;body&quot;:&quot;Appointment Insert success&quot;
+}
+</code></pre>
+
+<h2 id="datatype-image">datatype: image</h2>
+<pre><code class="language-json">
+{
+  "name": "&lt;string>",
+  "format": "jpg",
+  "data": "base64"
+}</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../../devcycle/" class="btn btn-neutral" title="Dev Cycle"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../devcycle/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,1 +1,9 @@
-site_name: My Docs
+site_name: Care28 Documentation
+
+nav:
+    - Home: index.md
+    - 'Dev Cycle': devcycle.md
+    - 'Rest API':
+        - 'info': 'rest/info.md'
+
+theme: readthedocs
