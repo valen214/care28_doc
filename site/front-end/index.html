@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Front-end - Care28 Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Front-end";
+    var mkdocs_page_input_path = "front-end.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Care28 Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Home</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="..">About</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Front-end</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#wordpress-parse_request-clickable-link">wordpress parse_request (clickable link)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#javascript-front-end-framework">Javascript front-end framework</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#svelte">Svelte</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#what-is-svelte">what is Svelte?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#why-svelte">Why Svelte?</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#current-state-of-the-server-program">Current State of the server program</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../devcycle/">Dev Cycle</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../databases/">Databases</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Rest API</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../rest/info/">info</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Care28 Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Home &raquo;</li>
+        
+      
+    
+    <li>Front-end</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <style>
+  .wrap-break-all.wrap-break-all {
+    white-space: break-spaces;
+    word-break: break-all;
+  }
+</style>
+
+<h1 id="front-end">Front-end</h1>
+<p>To understand how the front-end in this website works,
+it is need to understand how is each request altered
+by wordpress hooks.</p>
+<h2 id="wordpress-parse_request-clickable-link">wordpress <a href="https://developer.wordpress.org/reference/hooks/parse_request/#user-contributed-notes"><code>parse_request</code></a> (clickable link)</h2>
+<p>Hope the following snippet could explain what is actually going on
+in <code>reroute_path.php</code>:</p>
+<pre><code class="wrap-break-all">
+&lt;?php
+/**
+ * If done correctly, this function will run once
+ * for each and every process made to the server
+ */
+function process_request($wp){
+  // these two variables is self-explanatory
+  $method = $_SERVER["REQUEST_METHOD"];
+  $path = parse_url($wp->request, PHP_URL_PATH);
+
+  if($method == "GET"){
+    switch($path){
+    case "posts/hello-world-post":
+?&gt;&lt;html&gt;&lt;body&gt;
+Hello world
+&lt;/body&gt;&lt;/html&gt;&lt;?php
+      exit; // notice server response ends here
+    case "posts/about-post":
+?&gt;&lt;html&gt;&lt;body&gt;
+this is a complete normal php response flow
+&lt;/body&gt;&lt;/html&gt;&lt;?php
+      exit; // notice server response ends here
+    case "another-path":
+      echo "echo also works too, it's just php";
+      exit;
+    }
+  }
+
+  // falling back to wordpress default behavior
+  return $wp;
+}
+
+/**
+ * registering the 'parse_request' wordpress hook.
+ * run only once during server process, therefore,
+ * the 'reroute_path.php' file is, and should be
+ * imported in 'functions.php'
+ */
+add_action("parse_request", process_request);
+</code></pre>
+
+<p>with this script, when user navigates
+<code>&lt;server ip or url&gt;/posts/hello-world-post</code>,
+browser would receive
+<code>&lt;html&gt;&lt;body&gt;\nHello world\n&lt;/body&gt;&lt;/html&gt;</code><br />
+similarly, broswer would receive
+<code>echo also works too, it's just php</code>
+when user navigates <code>&lt;server ip or url&gt;/another-path</code><br />
+(technically broswer receives a http response which includes
+http headers, the text showing about is just the response payload,
+but let's skip the <a href="https://tools.ietf.org/html/rfc7231">specifics</a>)</p>
+<h2 id="javascript-front-end-framework">Javascript front-end framework</h2>
+<p>Most front-end framework (name any, Angular, React, Vue), when it is not non-SSR (server side rendered) requires you to include one to many scripts
+in the result html, like the following
+<pre><code class="wrap-break-all">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;script src=<!-- 
+-->"&lt;runtime library script from some cdn&gt;"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="app"&gt;&lt;/div&gt;
+    &lt;script src=<!-- 
+-->"&lt;your bundled script from framework&gt;"&gt;<!-- 
+ -->&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></p>
+<p>Combining this with <code>parse_request</code> above allow us to have
+javascript front-end framework running in a wordpress server.</p>
+<h2 id="svelte">Svelte</h2>
+<h3 id="what-is-svelte"><a href="https://svelte.dev/">what is Svelte?</a></h3>
+<h3 id="why-svelte">Why Svelte?</h3>
+<p>Among these frameworks, Angular, React, Svelte and Vue,
+Svelte has least boilerplate, and the learning curve is
+not as steep. Most things work intuitively in the sense
+of normal javascript other than the fact that Svelte
+introduces some weird C-like syntax for template
+flow control (for example <code>{#if condition}div{/if}</code>)
+Precompile runtime script may not be that much beneficial
+as they claimed but it is better than none.</p>
+<h2 id="current-state-of-the-server-program">Current State of the server program</h2>
+<p>As mentioned, <code>parse_request</code> plays a major role in connecting
+javascript front-end framework and php in wordpress.
+In case you still have not realized by now,
+each user-navigatable-page from each specific path
+is produced with one javascript bundle, as if:</p>
+<p>Home page accessible from <code>&lt;server ip&gt;/</code> is defined with <code>Home.js</code> <br />
+About page accessible from <code>&lt;server ip&gt;/about</code> is <code>About.js</code> <br />
+Profile page accessible from <code>&lt;server ip&gt;/profile</code> is <code>Profile.js</code>
+and so on.</p>
+<p>The js file is compiled with svelte compiler from corresponding
+source file.</p>
+<p><code>src/pages/Home.svelte</code> =&gt; <code>public/pages/Home.js</code> <br />
+<code>src/pages/About.svelte</code> =&gt; <code>public/pages/About.js</code> <br />
+<code>src/pages/profile/index.svelte</code> =&gt; <code>public/pages/Profile.js</code></p>
+<p>For details how it works, please refer to <a href="https://github.com/valen214/care28_pages/blob/master/rollup.config.js"><code>rollup.config.js</code></a> (clickable link) <br />
+In short, the rollup config file will find either <br />
+1. <code>&lt;page name&gt;.svelte</code> files under <code>src/pages</code> <br />
+or <br />
+2. <code>index.svelte</code> files under <code>src/pages/&lt;page name&gt;/</code> <br />
+and treat each as a separate page. <br />
+Each page would produce one <code>public/pages/&lt;page name&gt;.js</code> file as
+main entry to be included in the html. All you need
+is route each path to their own page in the server, for example</p>
+<p>when users access <code>/home</code>, return (in <code>parse_request</code>):
+<pre><code class="wrap-break-all">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;script src="/pages/Home.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt; 
+</code></pre></p>
+<p>or when users access <code>/profile</code>, return (in <code>parse_request</code>):
+<pre><code class="wrap-break-all">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;script src="/pages/Profile.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt; 
+</code></pre></p>
+<p>the rest will be done automatically.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../devcycle/" class="btn btn-neutral float-right" title="Dev Cycle">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="About"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../devcycle/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

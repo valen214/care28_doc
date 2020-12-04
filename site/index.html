@@ -5,11 +5,11 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="None">
+  
   
   
   <link rel="shortcut icon" href="img/favicon.ico">
-  <title>Care28 Documentation</title>
+  <title>About - Care28 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Home";
+    var mkdocs_page_name = "About";
     var mkdocs_page_input_path = "index.md";
     var mkdocs_page_url = null;
   </script>
@@ -47,12 +47,25 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Home</span></p>
                 <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href=".">Home</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href=".">About</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#back-end">Back-end</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#front-end">Front-end</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="front-end/">Front-end</a>
                     </li>
                 </ul>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="devcycle/">Dev Cycle</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="databases/">Databases</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Rest API</span></p>
@@ -80,8 +93,12 @@
     <li><a href=".">Docs</a> &raquo;</li>
     
       
+        
+          <li>Home &raquo;</li>
+        
+      
     
-    <li>Home</li>
+    <li>About</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -92,7 +109,37 @@
           <div role="main">
             <div class="section">
               
-                
+                <!--
+mkdocs build && git add -A && git commit -m "update" && git push origin master
+-->
+
+<h2 id="about-the-website">About the website</h2>
+<p>The website base project is wordpress,
+which is running with php.
+Due to the difficulty in routing paths to
+different pages with wordpress,
+most request (including serving HTML, backend rest api)
+are being handled separately with
+a custom php function, inside <a href="https://github.com/valen214/care28/blob/master/wp-content/themes/twentytwenty/reroute_path.php#L5"><code>reroute_path.php</code></a> (clickable link).
+This file is included by <code>functions.php</code>.</p>
+<p>This file registered a wordpress action hook <a href="https://developer.wordpress.org/reference/hooks/parse_request/"><code>parse_request</code></a>.
+Each and every request made to the wordpress server
+would run through this function.
+So if <code>exit</code> is encountered in the middle of the this function,
+the respond to any request made will terminate.
+If not, the function would return the parameter given, namely <code>$wp</code>,
+and fall back to wordpress default behavior.</p>
+<h3 id="back-end">Back-end</h3>
+<p><code>v1</code> backend server is running with php on the same server process as wordpress,
+<code>v2</code> is running with <a href="http://expressjs.com/">ExpressJS</a> in a different, separated process,
+all backend request are registered with <a href="https://developer.wordpress.org/reference/functions/register_rest_route/"><code>register_rest_route</code></a> in <a href="https://github.com/valen214/care28/blob/master/wp-content/themes/twentytwenty/api/main.php"><code>main.php</code></a>,
+which again is imported by <code>functions.php</code>.</p>
+<h3 id="front-end">Front-end</h3>
+<p><a href="/front-end">front-end</a></p>
+<h2 id="about-the-mobile-app">About the mobile app</h2>
+<p>Keywords: React Native, Expo, Electron?</p>
+<h2 id="about-this-doc">About this Doc</h2>
+<p>Keywords: Mkdocs</p>
               
             </div>
           </div>
@@ -100,7 +147,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="devcycle/" class="btn btn-neutral float-right" title="Dev Cycle">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="front-end/" class="btn btn-neutral float-right" title="Front-end">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
     </div>
@@ -128,7 +175,7 @@
       
       
       
-        <span style="margin-left: 15px"><a href="devcycle/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="front-end/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
@@ -143,8 +190,3 @@
 
 </body>
 </html>
-
-<!--
-MkDocs version : 1.1.2
-Build Date UTC : 2020-12-01 10:46:55.206691+00:00
--->

@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Dev Cycle - Care28 Documentation</title>
+  <title>Databases - Care28 Documentation</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Dev Cycle";
-    var mkdocs_page_input_path = "devcycle.md";
+    var mkdocs_page_name = "Databases";
+    var mkdocs_page_input_path = "databases.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -54,12 +54,30 @@
                     <li class="toctree-l1"><a class="reference internal" href="../front-end/">Front-end</a>
                     </li>
                 </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Dev Cycle</a>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../devcycle/">Dev Cycle</a>
                     </li>
                 </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../databases/">Databases</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Databases</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#intro">Intro</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tables">Tables</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#care28_userprofile">care28_userprofile</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#care28_posts">care28_posts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#care28_shops">care28_shops</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#care28_shop_products">care28_shop_products</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#care28_appointments">care28_appointments</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Rest API</span></p>
@@ -88,7 +106,7 @@
     
       
     
-    <li>Dev Cycle</li>
+    <li>Databases</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -99,7 +117,26 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="databases">Databases</h1>
+<h2 id="intro">Intro</h2>
+<p>Wordpress provided various databases for use by default,
+but those do not match all of the site needs,
+so multiple tables are added.</p>
+<h2 id="tables">Tables</h2>
+<p>It is recommeneded to put table names in a separate file,
+because it is, though infrequently, to make changes to table names.</p>
+<h3 id="care28_userprofile">care28_userprofile</h3>
+<p>this table is a supplement to the <code>{prefix}users</code> table
+offered by wordpress. <br />
+1-1-correspondence to care28_users</p>
+<h3 id="care28_posts">care28_posts</h3>
+<p>exists in wordpress by default,
+to filter out user created post,
+try <code>WHERE post_status='publish' AND post_type='post'</code></p>
+<h3 id="care28_shops">care28_shops</h3>
+<p>It was created with 1-1-correspondence to users at first.</p>
+<h3 id="care28_shop_products">care28_shop_products</h3>
+<h3 id="care28_appointments">care28_appointments</h3>
               
             </div>
           </div>
@@ -107,10 +144,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../databases/" class="btn btn-neutral float-right" title="Databases">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../rest/info/" class="btn btn-neutral float-right" title="info">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../front-end/" class="btn btn-neutral" title="Front-end"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../devcycle/" class="btn btn-neutral" title="Dev Cycle"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -136,10 +173,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../front-end/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../devcycle/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../databases/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../rest/info/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

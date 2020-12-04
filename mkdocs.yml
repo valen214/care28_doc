@@ -1,8 +1,12 @@
+
 site_name: Care28 Documentation
 
 nav:
-    - Home: index.md
+    - Home:
+        - 'About': index.md
+        - 'Front-end': 'front-end.md'
     - 'Dev Cycle': devcycle.md
+    - 'Databases': 'databases.md'
     - 'Rest API':
         - 'info': 'rest/info.md'
 
