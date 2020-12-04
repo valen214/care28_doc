@@ -153,3 +153,8 @@ or when users access `/profile`, return (in `parse_request`):
 </code></pre>
 
 the rest will be done automatically.
+
+Note: the above is just the simplification of the output html,
+details please refer to `showSveltePage()` in [`util/svelte_util.php`](
+  https://github.com/valen214/care28/blob/master/wp-content/themes/twentytwenty/util/svelte_util.php
+)
